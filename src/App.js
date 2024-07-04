@@ -1,49 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import TodoList from './TodoList';
-import './App.css'; // Import the CSS file
+import Task from './Task';
+import './App.css'; // Assuming you have a Task.css file for styles
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // Load tasks from local storage
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (storedTasks) {
-      setTasks(storedTasks);
-    }
+    // Load tasks from localStorage when the component mounts
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    setTasks(savedTasks);
   }, []);
 
   useEffect(() => {
-    // Save tasks to local storage
+    // Save tasks to localStorage whenever tasks change
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
   const addTask = (text) => {
-    setTasks([...tasks, { id: Date.now(), text, completed: false }]);
+    const newTask = { id: Date.now(), text, completed: false };
+    setTasks([...tasks, newTask]);
   };
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
   };
 
   const editTask = (id, newText) => {
-    setTasks(tasks.map(task => (task.id === id ? { ...task, text: newText } : task)));
+    const newTasks = tasks.map((task) =>
+      task.id === id ? { ...task, text: newText } : task
+    );
+    setTasks(newTasks);
   };
 
   const toggleTaskCompletion = (id) => {
-    setTasks(tasks.map(task => (task.id === id ? { ...task, completed: !task.completed } : task)));
+    const newTasks = tasks.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(newTasks);
   };
 
   return (
     <div className="App">
       <h1>Todo List</h1>
-      <TodoList
-        tasks={tasks}
-        addTask={addTask}
-        deleteTask={deleteTask}
-        editTask={editTask}
-        toggleTaskCompletion={toggleTaskCompletion}
+      <input
+        type="text"
+        placeholder="Add a new task"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && e.target.value) {
+            addTask(e.target.value);
+            e.target.value = '';
+          }
+        }}
       />
+      <ul>
+        {tasks.map((task) => (
+          <Task
+            key={task.id}
+            task={task}
+            deleteTask={deleteTask}
+            editTask={editTask}
+            toggleTaskCompletion={toggleTaskCompletion}
+          />
+        ))}
+      </ul>
     </div>
   );
 }

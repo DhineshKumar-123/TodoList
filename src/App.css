@@ -1,3 +1,4 @@
+
 /* Center the entire app */
 .App {
   display: flex;
@@ -136,3 +137,41 @@ button.cancel-task:hover {
   background: white;
   outline: none;
 }
+.delete-task {
+  margin-left: 10px; /* Adjust this value as needed */
+}
+
+.edit-task {
+  margin-right: 10x; /* Adjust this value as needed */
+}
+
+.save-task {
+  margin-right: 10px; /* Adjust this value as needed */
+}
+.cancel-task {
+  margin-right: 25px; /* Adjust this value as needed */
+}
+.task-item.completed-bg {
+  background-color: rgb(123, 255, 123);
+}
+li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  list-style: none;
+}
+
+li.completed {
+  background-color: green;
+}
+
+span {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.edit-task,
+.delete-task {
+  margin-left: 10px;
+}
+

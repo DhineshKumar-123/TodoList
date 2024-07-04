@@ -26,6 +26,7 @@ function TodoList({ tasks, addTask, deleteTask, editTask, toggleTaskCompletion }
           onChange={(e) => setNewTaskText(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Add a new task"
+          style={{ fontFamily: 'Arial, sans-serif' }} 
         />
         <button onClick={handleAddClick} className="add-task">Add Task</button>
       </div>
