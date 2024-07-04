@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/DhineshKumar-123/TodoList/static/css/main.de88e2f5.css",
+    "main.js": "/DhineshKumar-123/TodoList/static/js/main.b3e60603.js",
+    "index.html": "/DhineshKumar-123/TodoList/index.html",
+    "main.de88e2f5.css.map": "/DhineshKumar-123/TodoList/static/css/main.de88e2f5.css.map",
+    "main.b3e60603.js.map": "/DhineshKumar-123/TodoList/static/js/main.b3e60603.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de88e2f5.css",
+    "static/js/main.b3e60603.js"
+  ]
+}
